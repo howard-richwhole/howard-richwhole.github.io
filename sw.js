@@ -1,4 +1,4 @@
-const cacheName = "cache0"; // 快取key
+const cacheName = "cache1"; // 快取key
 
 self.addEventListener("install", event => {
 	// Kick out the old service worker
