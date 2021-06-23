@@ -51,6 +51,7 @@ self.addEventListener("install", event => {
 });
 
 self.addEventListener("activate", event => {
+	console.log(cacheName)
 	// 刪除跟key 不符合的快取
 	event.waitUntil(
 		caches.keys().then(keys => {
