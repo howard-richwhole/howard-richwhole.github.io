@@ -1,0 +1,104 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/polyfills.umd.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      * {
+        font-family: "Noto Sans TC", sans-serif;
+      }
+
+     input{
+       display: block;
+     }
+    </style>
+  </head>
+
+  <body>
+    <button id="btn">pdf</button>
+    <input id="input1"/>
+    <input id="input2"/>
+    <input id="input3"/>
+    <input id="input4"/>
+    <input id="input5"/>
+    <input id="input6"/>
+    <input id="input7"/>
+    <input id="input8"/>
+    <input id="input9"/>
+    <input id="input10"/>
+    <input id="input11"/>
+    <input id="input12"/>
+    <input id="input13"/>
+    <input id="input14"/>
+    <input id="input15"/>
+    <script>
+      function getText(id){
+        return document.querySelector(`#input${id}`).value
+      }
+      setTimeout(() => {
+        document.querySelector("#btn").onclick = function test() {
+          const doc = new jspdf.jsPDF({orientation:'l',format:'a4'});
+          // doc.addFileToVFS("微軟正黑體.ttf", fontBlob);
+          doc.addFont("微軟正黑體.ttf", "微軟正黑體", "normal",'normal');
+          // doc.addFont("標楷體.ttf", "標楷體", "normal",'bold');
+          doc.setFont("微軟正黑體",'normal','normal');
+
+          doc.text('計畫計畫計畫計畫計畫計畫計畫計畫',90,10)
+          doc.text('日期:109年10月10日',235,35)
+
+          doc.cell(10, 40, 277, 10, "一、基本資料", 1, "left");
+          
+          doc.cell(10, 40, 35, 10, "申請案號", 2, "center");
+          doc.cell(10, 40, 277-35, 10, `${getText(1)} `, 2, "left");
+          doc.cell(10, 40, 35, 10, "申請機構", 3, "center");
+          doc.cell(10, 40, 277-35, 10, `${getText(2)} `, 3, "left");
+          doc.cell(10, 40, 35, 17, "細胞製備場所所屬機構", 4, "center");
+          doc.cell(10, 40, 277-35, 17, `${getText(3)} `, 4, "left");
+
+          
+          doc.cell(10, 40, 277, 10, "二、審查意見", 5, "left");
+          doc.cell(10, 40, 277, 1, ` `, 6, "left");
+
+          doc.cell(10, 40, 35, 10, "申請機構", 7, "center");
+          doc.cell(10, 40, 121, 10, "審查意見", 7, "left");
+          doc.cell(10, 40, 121, 10, "審查意見", 7, "left");
+
+          
+          doc.cell(10, 40, 35, 15, "1. 計畫書", 8, "center");
+          doc.cell(10, 40, 121, 15, `${getText(4)} `, 8, "left");
+          doc.cell(10, 40, 121, 15, `${getText(5)} `, 8, "left");
+
+          
+          doc.cell(10, 40, 35, 25, "2. 同意書及說明書範例", 9, "center");
+          doc.cell(10, 40, 121, 25, `${getText(6)} `, 9, "left");
+          doc.cell(10, 40, 121, 25, `${getText(7)} `, 9, "left");
+
+          doc.cell(10, 40, 35, 25, "3. 同意書及說明書範例", 10, "center");
+          doc.cell(10, 40, 121, 25, `${getText(8)} `, 10, "left");
+          doc.cell(10, 40, 121, 25, `${getText(9)} `, 10, "left");
+          
+          doc.cellAddPage()
+          doc.cell(10, 20, 35, 25, "4. 同意書及說明書範例", 1, "center");
+          doc.cell(10, 20, 121, 25, `${getText(10)} `, 1, "left");
+          doc.cell(10, 20, 121, 25, `${getText(11)} `, 1, "left");
+          
+          doc.cell(10, 40, 35, 25, "5. 同意書及說明書範例", 12, "center");
+          doc.cell(10, 40, 121, 25, `${getText(12)} `, 12, "left");
+          doc.cell(10, 40, 121, 25, `${getText(13)} `, 12, "left");
+          
+          doc.cell(10, 40, 35, 25, "6. 同意書及說明書範例", 13, "center");
+          doc.cell(10, 40, 121, 25, `${getText(14)} `, 13, "left");
+          doc.cell(10, 40, 121, 25, `${getText(15)} `, 13, "left");
+
+          doc.save("abc.pdf");
+        };
+      }, 500);
+    </script>
+  </body>
+</html>
