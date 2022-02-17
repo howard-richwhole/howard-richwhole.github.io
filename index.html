@@ -87,6 +87,7 @@
         window.addEventListener(
           "beforeinstallprompt",
           function (beforeInstallPromptEvent) {
+						alert('before install')
             document.querySelector("#installBtn").onclick = () => {
               beforeInstallPromptEvent.prompt();
             };
