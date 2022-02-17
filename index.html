@@ -84,10 +84,13 @@
           navigator.serviceWorker &&
             navigator.serviceWorker.register("./sw.js");
         });
+        window.addEventListener("appinstalled", (evt) => {
+            alert("installed");
+        });
         window.addEventListener(
           "beforeinstallprompt",
           function (beforeInstallPromptEvent) {
-						alert('before install')
+            alert("before install");
             document.querySelector("#installBtn").onclick = () => {
               beforeInstallPromptEvent.prompt();
             };
