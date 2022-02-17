@@ -87,7 +87,9 @@
         window.addEventListener(
           "beforeinstallprompt",
           function (beforeInstallPromptEvent) {
-       window.ppp = beforeInstallPromptEvent
+            document.querySelector("#installBtn").onclick = () => {
+              beforeInstallPromptEvent.prompt();
+            };
           }
         );
       }
@@ -107,7 +109,9 @@
 
     <section>
       <div class="container">
-        <h2 id="what">What is this</h2>
+        <h2 id="what">
+          What is this<button id="installBtn">install prompt</button>
+        </h2>
         <p>
           <a
             href="https://github.com/nikkifurls/simple-pwa"
