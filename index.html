@@ -87,6 +87,17 @@
         window.addEventListener("appinstalled", (evt) => {
             alert("installed");
         });
+        window.addEventListener("beforeunload", (evt) => {
+          let hasInstall = false
+          window.addEventListener("blur", (evt) => {
+            hasInstall = true
+        });
+        setTimeout(()=>{
+          if(!hasInstall){
+            document.querySelector('h1').innerText = "NEED REDIRECT"
+          }
+        },500)
+        });
         window.addEventListener(
           "beforeinstallprompt",
           function (beforeInstallPromptEvent) {
