@@ -85,28 +85,21 @@
             navigator.serviceWorker.register("./sw.js");
         });
         window.addEventListener("appinstalled", (evt) => {
-            alert("installed");
+          alert("installed");
         });
-        window.addEventListener("beforeunload", (evt) => {
-          let hasInstall = false
-          window.addEventListener("blur", (evt) => {
-            hasInstall = true
-        });
-        setTimeout(()=>{
-          if(!hasInstall){
-            document.querySelector('h1').innerText = "NEED REDIRECT"
-          }
-        },500)
-        });
-        window.addEventListener(
-          "beforeinstallprompt",
-          function (beforeInstallPromptEvent) {
-            alert("before install");
-            document.querySelector("#installBtn").onclick = () => {
-              beforeInstallPromptEvent.prompt();
-            };
-          }
-        );
+        setTimeout(() => {
+          window.addEventListener("beforeunload", (evt) => {
+            let hasInstall = false;
+            window.addEventListener("blur", (evt) => {
+              hasInstall = true;
+            });
+            setTimeout(() => {
+              if (!hasInstall) {
+                document.querySelector("h1").innerText = "NEED REDIRECT";
+              }
+            }, 500);
+          });
+        }, 1000);
       }
     </script>
     <script defer src="./main.js"></script>
@@ -115,7 +108,11 @@
   <body>
     <header>
       <div class="container">
-        <a href="mqqwpa://im/chat?chat_type=wpa&uin=2851793345&version=1" class="logo" aria-label="Logo">
+        <a
+          href="mqqwpa://im/chat?chat_type=wpa&uin=2851793345&version=1"
+          class="logo"
+          aria-label="Logo"
+        >
           <img src="logo.png" alt="Logo" />
         </a>
         <h1>Simple Progressive Web App (PWA) template</h1>
