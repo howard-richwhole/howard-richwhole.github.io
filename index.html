@@ -31,7 +31,7 @@
     <!-- 另一種寫法 favicon -->
     <link rel="shortcut icon" href="./favicon.ico" />
     <!-- web app 設定黨 -->
-    <link rel="manifest" href="./manifest.json" />
+    <link rel="manifest" href="/manifest.json" />
     <!-- windows 主題 -->
     <meta name="msapplication-TileColor" content="#000000" />
     <meta name="msapplication-TileImage" content="./mstile-144x144.png" />
@@ -84,9 +84,7 @@
           navigator.serviceWorker &&
             navigator.serviceWorker.register("./sw.js");
         });
-        window.addEventListener("appinstalled", (evt) => {
-          alert("installed");
-        });
+ 
         setTimeout(() => {
           window.addEventListener("beforeunload", (evt) => {
             let hasInstall = false;
@@ -100,6 +98,14 @@
             }, 500);
           });
         }, 1000);
+        window.addEventListener(
+          "beforeinstallprompt",
+          function (beforeInstallPromptEvent) {
+            document.querySelector("#installBtn").onclick = () => {
+              beforeInstallPromptEvent.prompt();
+            };
+          }
+        );
       }
     </script>
     <script defer src="./main.js"></script>
