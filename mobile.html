@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0" />
+    <link href="mobile.css" rel="stylesheet" />
+    <link
+      rel="icon"
+      type="image/x-icon"
+      class="js-site-favicon"
+      href=""
+      id="favicon"
+    />
+    <script src="https://unpkg.com/vue@3.2.37/dist/vue.global.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.js"></script>
+
+    <!-- <link rel="icon" href="<%= BASE_URL %>favicon.ico"> -->
+    <title>手機字型大小</title>
+  </head>
+
+  <body>
+    <noscript>
+      <strong
+        >We're sorry but website doesn't work properly without JavaScript
+        enabled. Please enable it to continue.</strong
+      >
+    </noscript>
+    <div id="app"></div>
+    <script>
+      const { createApp, h, ref ,onMounted} = Vue;
+      const app = {
+        setup() {
+          const count = ref(10);
+          const unit = ref("px");
+          const font = ref("蘋方");
+          const init = ref(1);
+          const range = ref(1);
+          const vw = ref(innerWidth)
+          const vh = ref(innerHeight)
+          onMounted(()=>{
+            addEventListener('resize',()=>{
+              vw.value = innerWidth
+              vh.value = innerHeight
+            })
+          })
+          return { count, unit, font, init, range,vh,vw };
+        },
+       
+        render() {
+          const form = h("form", [
+            h("h6", "字體"),
+            h(
+              "select",
+              {
+                value: this.font,
+                onChange: (evt) => {
+                  this.font = evt.target.value;
+                },
+              },
+              _.map(["蘋方", "雅黑", "dinpro", "DinPro", "unset"], (i) =>
+                h("option", i)
+              )
+            ),
+            h("h6", "字體大小"),
+            h("input", {
+              value: this.init,
+              type: "number",
+              onInput: (evt) => {
+                this.init = evt.target.value;
+              },
+            }),
+            h("h6", "字體單位"),
+            h(
+              "select",
+              {
+                value: this.unit,
+                onChange: (evt) => {
+                  this.unit = evt.target.value;
+                },
+              },
+              _.map(["px", "vw", "pt"], (i) => h("option", i))
+            ),
+            h("h6", "大小間格"),
+            h("input", {
+              value: this.range,
+              type: "number",
+              onInput: (evt) => {
+                this.range = evt.target.value;
+              },
+            }),
+            h("h6", "個數"),
+            h("input", {
+              value: this.count,
+              type: "number",
+              onInput: (evt) => {
+                this.count = parseInt(evt.target.value);
+              },
+            }),
+          ]);
+          const view = h(
+            "div",
+            { style: { fontFamily: this.font } },
+            _.times(this.count, (i) => {
+              const fontSize =
+                Math.round((this.init + i * this.range) * 100) / 100 +
+                this.unit;
+              return h("span", { style: { fontSize } }, `你我他${fontSize}`);
+            })
+          );
+          const size = h('p',[h('small','螢幕可用尺寸'),h('b','長'+this.vw+'px'),h('b','高'+this.vh+'px')])
+          return [size,form, view];
+        },
+      };
+      createApp(app).mount("#app");
+    </script>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
