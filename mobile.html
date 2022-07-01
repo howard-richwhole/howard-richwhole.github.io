@@ -108,9 +108,9 @@
           const view = h(
             "div",
             { style: { fontFamily: this.font === '預設'?'unset':this.font } },
-            _.times(this.count, (i) => {
+            _.times(Number(this.count), (i) => {
               const fontSize =
-                Math.round((this.init + i * this.range) * 100) / 100 +
+                Math.round((Number(this.init) + i * Number(this.range)) * 100) / 100 +
                 this.unit;
               return h("span", { style: { fontSize } }, this.text +fontSize);
             })
