@@ -49,7 +49,7 @@
         },
        
         render() {
-          const form = h("form", [    h("h6", "字體大小"),
+          const form = h("form", [    h("h6", "顯示字"),
             h("input", {
               value: this.text,
               onInput: (evt) => {
@@ -69,7 +69,7 @@
                 h("option", i)
               )
             ),
-            h("h6", "顯示字"),
+            h("h6", "字體大小"),
             h("input", {
               value: this.init,
               type: "number",
