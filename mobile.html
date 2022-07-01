@@ -36,6 +36,7 @@
           const font = ref("蘋方");
           const init = ref(1);
           const range = ref(1);
+          const text = ref('你我国 ')
           const vw = ref(innerWidth)
           const vh = ref(innerHeight)
           onMounted(()=>{
@@ -44,11 +45,17 @@
               vh.value = innerHeight
             })
           })
-          return { count, unit, font, init, range,vh,vw };
+          return { count, unit, font, init, range,vh,vw,text };
         },
        
         render() {
-          const form = h("form", [
+          const form = h("form", [    h("h6", "字體大小"),
+            h("input", {
+              value: this.text,
+              onInput: (evt) => {
+                this.text = evt.target.value;
+              },
+            }),
             h("h6", "字體"),
             h(
               "select",
@@ -105,7 +112,7 @@
               const fontSize =
                 Math.round((this.init + i * this.range) * 100) / 100 +
                 this.unit;
-              return h("span", { style: { fontSize } }, `你我他${fontSize}`);
+              return h("span", { style: { fontSize } }, this.text +fontSize);
             })
           );
           const size = h('p',[h('small','螢幕可用尺寸'),h('b','長'+this.vw+'px'),h('b','高'+this.vh+'px')])

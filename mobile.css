@@ -19,7 +19,7 @@ b{
   display: flex;
 }
 #app > div{
-  padding-left: 20px;
+  padding: 50px 0 0 20px;
 }
 input {
   width: 50px
