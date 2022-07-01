@@ -58,7 +58,7 @@
                   this.font = evt.target.value;
                 },
               },
-              _.map(["蘋方", "雅黑", "dinpro", "DinPro", "unset"], (i) =>
+              _.map(["蘋方", "雅黑", "dinpro", "DinPro", "預設"], (i) =>
                 h("option", i)
               )
             ),
@@ -100,7 +100,7 @@
           ]);
           const view = h(
             "div",
-            { style: { fontFamily: this.font } },
+            { style: { fontFamily: this.font === '預設'?'unset':this.font } },
             _.times(this.count, (i) => {
               const fontSize =
                 Math.round((this.init + i * this.range) * 100) / 100 +
