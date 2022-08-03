@@ -1,0 +1,60 @@
+#app > div > span {
+  display: block;
+  white-space: nowrap;
+}
+p {
+  position: fixed;
+  bottom: 10vh;
+  left: 0;
+  width: 100%;
+  text-align: center;
+  background: #fff;
+}
+small{
+  display: block;
+}
+b{
+  padding: 0 10px
+}
+#app{
+  display: flex;
+  max-width: 100vw;
+  max-height: 100vh;
+  overflow: hidden;
+}
+#app > div{
+  padding: 50px 0 0 20px;
+}
+input {
+  width: 50px
+}
+form > *{
+  display: block;
+}
+h6{
+  margin: 0;
+  padding-top: 5px
+}
+@font-face {
+  font-family: 蘋方;
+  src: local("蘋方"), url("font/PingFangSCRegular.woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: dinpro;
+  src: local("dinpro"), url("font/din.woff");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: DinPro;
+  src: local("DinPro"), url("font/DINPro.ttf");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 雅黑;
+  src: local("雅黑"), url("font/yaheiInconsolata.ttf");
+  font-display: swap;
+}
